@@ -9,12 +9,15 @@ import UIKit
 
 class ViewController: UIViewController {
     @IBOutlet var mainView: UIView!
-    
     @IBOutlet weak var mainLabel: UILabel!
-    
     @IBOutlet weak var resetButton: UIButton!
-    
     @IBOutlet weak var changeColorButton: UIButton!
+    
+    var randomRed: Double = 0
+    var randomGreen: Double = 0
+    var randomBlue: Double = 0
+    
+    var randomColor: UIColor = UIColor.white
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,11 +32,11 @@ class ViewController: UIViewController {
     }
     
     @IBAction func changeColorButtonPressed(_ sender: UIButton) {
-        let randomRed = CGFloat.random(in: 0...1)
-        let randomGreen = CGFloat.random(in: 0...1)
-        let randomBlue = CGFloat.random(in: 0...1)
-        let randomColor = UIColor(red: randomRed, green: randomGreen, blue: randomBlue, alpha: 1.0)
+        randomRed = CGFloat.random(in: 0...1)
+        randomGreen = CGFloat.random(in: 0...1)
+        randomBlue = CGFloat.random(in: 0...1)
         
+        randomColor = UIColor(red: randomRed, green: randomGreen, blue: randomBlue, alpha: 1.0)
         mainView.backgroundColor = randomColor
         
         mainLabel.text = "R: \(Int(randomRed * 255)), G: \(Int(randomGreen * 255)), B: \(Int(randomBlue * 255))"
@@ -42,8 +45,7 @@ class ViewController: UIViewController {
     @IBAction func resetButtonPressed(_ sender: UIButton) {
         mainView.backgroundColor = UIColor.white
         mainLabel.text = "R: 255, G: 255, B: 255"
-    }
-    
+    }    
 
 }
 
